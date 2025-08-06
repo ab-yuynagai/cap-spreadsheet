@@ -24,7 +24,9 @@ sap.ui.define([
         // const oView = oEvent.getSource().getParent().getParent(); // 必要に応じて調整
         // const oView = this.getView();
 
-        const oView = sap.ui.getCore().byId("ns.incidents::IncidentsObjectPage");
+        // const oView = sap.ui.getCore().byId("ns.incidents::IncidentsObjectPage");
+        const oView = sap.ui.getCore().byId("ns.incidents::IncidentsObjectPage--fe::FacetSection::Conversation");
+
 
         if (!oView) {
             console.error("Viewが取得できませんでした");
@@ -45,7 +47,7 @@ sap.ui.define([
           async: true,
           componentData: {
             context: oView.getController(),
-            tableId: "ns.incidents::IncidentsObjectPage--fe::table::conversation::LineItem::i18nConversation-innerTable"
+            tableId: "ns.incidents::IncidentsObjectPage--fe::table::conversation::LineItem::Conversation-innerTable"
           },
         });
         console.log("Spreadseet Importerダイアログ 生成完了")

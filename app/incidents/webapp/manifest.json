@@ -57,13 +57,13 @@
     },
     "sap.ui5": {
         "componentUsages": {
-            "spreadsheetImporter":{
+            "spreadsheetImporter": {
                 "name": "cc.spreadsheetimporter.v2_3_0"
             }
         },
         "resourceRoots": {
             "cc.spreadsheetimporter.v2_3_0": "./thirdparty/customcontrol/spreadsheetimporter/v2_3_0"
-        },  
+        },
         "flexEnabled": true,
         "dependencies": {
             "minUI5Version": "1.120.0",
@@ -169,6 +169,17 @@
                                             "enabled": true,
                                             "requiresSelection": false,
                                             "text": "Upload"
+                                        }
+                                    }
+                                },
+                                "conversation/@com.sap.vocabularies.UI.v1.LineItem#Conversation": {
+                                    "actions": {
+                                        "excelUpload": {
+                                            "press": "ns.incidents.ext.controller.ExcelUpload.excelUpload",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "excelUpload"
                                         }
                                     }
                                 }

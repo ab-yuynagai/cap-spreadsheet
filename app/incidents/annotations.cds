@@ -66,12 +66,6 @@ annotate service.Incidents with @(
         },],
     },
     {
-      $Type : 'UI.ReferenceFacet',
-      Label : '{i18n>Conversation}',
-      ID : 'i18nConversation',
-      Target : 'conversation/@UI.LineItem#i18nConversation1',
-    },
-    {
         $Type : 'UI.ReferenceFacet',
         Label : 'Conversation',
         ID : 'Conversation',
@@ -169,26 +163,40 @@ annotate service.Incidents with {
     ![@UI.TextArrangement] : #TextOnly,
   }
 };
-annotate service.Incidents.conversation with @(
-  title : '{i18n>Conversation}',
-  UI.LineItem #i18nConversation1 : [
-    {
-      $Type : 'UI.DataField',
-      Value : author,
-      Label : '{i18n>Author}',
-    },
-    {
-      $Type : 'UI.DataField',
-      Value : timestamp,
-      Label : '{i18n>ConversationDate}',
-    },{
-      $Type : 'UI.DataField',
-      Value : message,
-      Label : '{i18n>Message}',
-    },]
-);
+// annotate service.Incidents.conversation with @(
+//   title : '{i18n>Conversation}',
+//   UI.LineItem #i18nConversation1 : [
+//     {
+//       $Type : 'UI.DataField',
+//       Value : author,
+//       Label : '{i18n>Author}',
+//     },
+//     {
+//       $Type : 'UI.DataField',
+//       Value : timestamp,
+//       Label : '{i18n>ConversationDate}',
+//     },{
+//       $Type : 'UI.DataField',
+//       Value : message,
+//       Label : '{i18n>Message}',
+//     },]
+// );
 annotate service.Conversation with @(
     UI.LineItem #Conversation : [
+      {
+        $Type : 'UI.DataField',
+        Value : author,
+        Label : '{i18n>Author}',
+      },
+      {
+        $Type : 'UI.DataField',
+        Value : timestamp,
+        Label : '{i18n>ConversationDate}',
+      },{
+        $Type : 'UI.DataField',
+        Value : message,
+        Label : '{i18n>Message}',
+      },
     ]
 );
 
