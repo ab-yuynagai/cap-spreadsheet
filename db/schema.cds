@@ -34,21 +34,21 @@ entity Incidents : cuid, managed {
   title          : String @title: 'Title';
   urgency        : Association to Urgency default 'M';
   status         : Association to Status default 'N';
-  // conversation   : Composition of many {
-  //   key ID    : UUID;
-  //   timestamp : type of managed:createdAt;
-  //   author    : type of managed:createdBy;
-  //   message   : String;
-  // };
-  conversation : Composition of many Conversation on conversation.incident = $self;
+  conversation   : Composition of many {
+    key ID    : UUID;
+    timestamp : type of managed:createdAt;
+    author    : type of managed:createdBy;
+    message   : String;
+  };
+  // conversation : Composition of many Conversation on conversation.incident = $self;
 }
 
-entity Conversation : cuid, managed {
-  incident    : Association to Incidents;
-  timestamp   : type of managed:createdAt;
-  author      : type of managed:createdBy;
-  message     : String;
-}
+// entity Conversation : cuid, managed {
+//   incident    : Association to Incidents;
+//   timestamp   : type of managed:createdAt;
+//   author      : type of managed:createdBy;
+//   message     : String;
+// }
 
 entity Status : CodeList {
   key code    : String enum {
