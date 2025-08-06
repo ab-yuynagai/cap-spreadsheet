@@ -56,6 +56,14 @@
         }
     },
     "sap.ui5": {
+        "componentUsages": {
+            "spreadsheetImporter":{
+                "name": "cc.spreadsheetimporter.v2_3_0"
+            }
+        },
+        "resourceRoots": {
+            "cc.spreadsheetimporter.v2_3_0": "./thirdparty/customcontrol/spreadsheetimporter/v2_3_0"
+        },  
         "flexEnabled": true,
         "dependencies": {
             "minUI5Version": "1.120.0",
@@ -152,12 +160,24 @@
                                             "name": "Inline"
                                         }
                                     }
+                                },
+                                "conversation/@com.sap.vocabularies.UI.v1.LineItem#i18nConversation1": {
+                                    "actions": {
+                                        "FileUpload": {
+                                            "press": "ns.incidents.ext.controller.Upload.Upload",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Upload"
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
+            },
+            "config": {}
         },
         "extends": {
             "extensions": {

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout"
+  xmlns:u="sap.ui.unified"
+  xmlns:spreadsheetdialog="cc.spreadsheetimporter.v2_3_0.control"
+>
+  <spreadsheetdialog:SpreadsheetDialog
+    title="{i18n>spreadsheetimporter.wizardTitle}"
+    contentWidth="80%"
+    contentHeight="80%"
+    resizable="true"
+    draggable="true"
+    showHeader="true"
+    afterClose="onWizardClose"
+    verticalScrolling="false"
+    fileDrop="onFileDrop"
+  >
+    <spreadsheetdialog:content>
+      <!-- Action Indicator at top of wizard -->
+      <HBox justifyContent="SpaceBetween" alignItems="Center">
+        <MessageStrip
+          text="{
+                        parts: [
+                            'wizard>/action',
+                            'i18n>spreadsheetimporter.actionCreate',
+                            'i18n>spreadsheetimporter.actionUpdate',
+                            'i18n>spreadsheetimporter.actionDelete',
+                            'i18n>spreadsheetimporter.actionUpsert'
+                        ],
+                        formatter: '.formatSimpleActionText'
+                    }"
+          type="Information"
+          class="sapUiNoMarginBottom"
+          showIcon="true"
+          enableFormattedText="true"
+        >
+          <layoutData>
+            <FlexItemData growFactor="0" shrinkFactor="0" baseSize="50%" />
+          </layoutData>
+        </MessageStrip>
+        <Button
+          press=".onTempDownload"
+          text="{i18n>spreadsheetimporter.downloadTemplate}"
+          visible="{= !${info>/hideGenerateTemplateButton}}"
+          class="sapUiMediumMarginEnd"
+        />
+      </HBox>
+
+      <Wizard
+        width="100%"
+        height="100%"
+        showNextButton="false"
+        enableBranching="true"
+        renderMode="Page"
+        complete="onWizardComplete"
+        stepActivate="onWizardStepChanged"
+      >
+        <WizardStep title="{i18n>spreadsheetimporter.uploadFile}" validated="{= ${wizard>/fileUploaded} === true}">
+          <VBox width="100%" height="100%" class="sapUiResponsivePadding--content">
+            <Label text="{i18n>spreadsheetimporter.chooseFile}" class="sapUiTinyMarginBottom" />
+            <u:FileUploader
+              width="50%"
+              fileType="xlsx,xls,csv,xlsm"
+              placeholder="{i18n>spreadsheetimporter.chooseFile}"
+              uploadOnChange="false"
+              value="{wizard>/fileUploadValue}"
+              sameFilenameAllowed="true"
+              change="onFileUpload"
+              style="Emphasized"
+              class="sapUiMediumMarginBottom"
+            />
+          </VBox>
+          <customData>
+            <core:CustomData key="stepName" value="uploadStep" />
+          </customData>
+        </WizardStep>
+        <WizardStep
+          title="{i18n>spreadsheetimporter.headerSelectionTitle}"
+          validated="{= ${wizard>/headerSelected} === true}"
+          nextStep="previewDataStep"
+        >
+          <VBox width="100%" class="sapUiSmallMargin" fitContainer="true">
+            <Text text="{i18n>spreadsheetimporter.headerSelectionDescription}" class="sapUiSmallMarginBottom" />
+            <!-- Table container - table will be created in controller -->
+            <VBox width="100%" fitContainer="true" />
+          </VBox>
+          <customData>
+            <core:CustomData key="stepName" value="headerSelectionStep" />
+          </customData>
+        </WizardStep>
+        <WizardStep title="{i18n>spreadsheetimporter.messagesStepTitle}" validated="false" nextStep="previewDataStep" class="height-100">
+          <VBox width="100%" class="sapUiSmallMargin" fitContainer="true">
+            <Text text="{i18n>spreadsheetimporter.messagesStepDescription}" class="sapUiSmallMarginBottom" />
+            <VBox width="100%" fitContainer="true" />
+          </VBox>
+          <customData>
+            <core:CustomData key="stepName" value="messagesStep" />
+          </customData>
+        </WizardStep>
+        <WizardStep title="{i18n>spreadsheetimporter.previewDataTitle}" validated="false">
+          <VBox width="100%" class="sapUiSmallMargin">
+            <Text text="{i18n>spreadsheetimporter.previewDescription}" class="sapUiSmallMarginBottom" />
+            <VBox width="100%" height="100%">
+              <!-- Preview content will be added dynamically -->
+            </VBox>
+          </VBox>
+          <customData>
+            <core:CustomData key="stepName" value="previewDataStep" />
+          </customData>
+        </WizardStep>
+      </Wizard>
+    </spreadsheetdialog:content>
+    <spreadsheetdialog:buttons>
+      <Button text="{i18n>spreadsheetimporter.cancel}" press="onWizardCancel" />
+      <Button text="{i18n>spreadsheetimporter.upload}" type="Emphasized" press="onWizardFinish" enabled="{wizard>/uploadButtonEnabled}" />
+    </spreadsheetdialog:buttons>
+  </spreadsheetdialog:SpreadsheetDialog>
+</core:FragmentDefinition>

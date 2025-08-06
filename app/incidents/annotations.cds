@@ -71,8 +71,15 @@ annotate service.Incidents with @(
       ID : 'i18nConversation',
       Target : 'conversation/@UI.LineItem#i18nConversation1',
     },
+    {
+        $Type : 'UI.ReferenceFacet',
+        Label : 'Conversation',
+        ID : 'Conversation',
+        Target : 'conversation/@UI.LineItem#Conversation',
+    },
   ]
 );
+
 annotate service.Incidents with @(
   UI.SelectionFields : [
     urgency_code,
@@ -180,3 +187,8 @@ annotate service.Incidents.conversation with @(
       Label : '{i18n>Message}',
     },]
 );
+annotate service.Conversation with @(
+    UI.LineItem #Conversation : [
+    ]
+);
+

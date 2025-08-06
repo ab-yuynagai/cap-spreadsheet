@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/base/ManagedObject"],function(e){"use strict";const t=e.extend("cc.spreadsheetimporter.v2_3_0.Logger",{returnObject:function e(t){return t}});return t});
+//# sourceMappingURL=Logger.js.map
