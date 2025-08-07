@@ -14,7 +14,7 @@
 
 sap.ui.define([
     "sap/m/MessageToast",
-    "sap/ui/core/mvc/Controller",
+    // "sap/ui/core/mvc/Controller",
   ], function(MessageToast) {
     'use strict';
     console.log("start")
@@ -45,7 +45,8 @@ sap.ui.define([
           async: true,
           componentData: {
             context: oView.getController(),
-            tableId: "ns.incidents::IncidentsObjectPage--fe::table::conversation::LineItem::i18nConversation1-innerTable"
+            tableId: "ns.incidents::IncidentsObjectPage--fe::table::conversation::LineItem::i18nConversation1-innerTable",
+            batchSize: 100
           },
         });
         console.log("Spreadseet Importerダイアログ 生成完了")

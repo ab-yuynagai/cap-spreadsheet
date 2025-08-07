@@ -2,7 +2,9 @@
   "name": "@capire/incidents",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/hana": "^2",
     "@sap/cds": ">=8",
+    "@sap/xssec": "^4",
     "express": "^4",
     "ui5-cc-spreadsheetimporter": "^2.3.0"
   },
@@ -11,7 +13,9 @@
     "@cap-js/audit-logging": ">=0.8.3",
     "@cap-js/cds-test": "*",
     "@cap-js/change-tracking": "^1.0.6",
-    "@cap-js/sqlite": ">=1"
+    "@cap-js/sqlite": ">=1",
+    "@sap/cds-dk": ">=8",
+    "cds-plugin-ui5": "^0.13.4"
   },
   "scripts": {
     "watch": "cds watch",
@@ -22,5 +26,21 @@
   "sapux": [
     "app/incidents"
   ],
-  "private": true
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "destinations": true,
+      "html5-runtime": true,
+      "workzone": true
+    },
+    "server": {
+      "body_parser": {
+        "limit": "10mb"
+      }
+    }
+  }
 }
