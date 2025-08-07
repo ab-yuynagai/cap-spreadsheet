@@ -20,7 +20,8 @@ cd incidents-app
 ```
 
 ```sh
-npm install
+npm install -
+
 ```
 
 
