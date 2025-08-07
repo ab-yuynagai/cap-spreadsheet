@@ -103,12 +103,14 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: objectstore
-      service-plan: standard
+      # service-plan: standard
+      service-plan: lite
   - name: incidents-auditlog
     type: org.cloudfoundry.managed-service
     parameters:
-      service: auditlog
-      service-plan: premium
+      service: auditlog-management
+      # service-plan: premium
+      service-plan: default
   - name: incidents-db
     type: com.sap.xs.hdi-container
     parameters:
