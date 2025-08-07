@@ -43,5 +43,5 @@
   - https://developers.sap.com/group.cap-application-full-stack.html
   - https://developers.sap.com/group.deploy-full-stack-cap-application.html
 - Spreadsheet Importerを組み込む過程でObjectStoreを利用
-  - Trial環境ではObjectStoreは使用できないため代替案を探す必要あり
+  - Trial環境ではObjectStoreは使用できないためデプロイは未確認
 

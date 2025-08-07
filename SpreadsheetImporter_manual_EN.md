@@ -44,4 +44,4 @@
   - https://developers.sap.com/group.cap-application-full-stack.html  
   - https://developers.sap.com/group.deploy-full-stack-cap-application.html  
 - During integration of Spreadsheet Importer, `ObjectStore` is used
-  - Since `ObjectStore` is not available in the trial environment, an alternative solution is required
+  - Since ObjectStore cannot be used in the trial environment, the deployment remains unconfirmed.
